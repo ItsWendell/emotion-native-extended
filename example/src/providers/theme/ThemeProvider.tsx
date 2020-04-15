@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { ApplicationProvider } from "@ui-kitten/components";
 import { mapping, light, dark } from "@eva-design/eva";
+import { ThemeProvider as EmotionProvider } from "emotion-theming";
 
 import { ThemeContext } from "./ThemeContext";
 import { themes } from "./theme";
@@ -21,7 +22,9 @@ export const ThemeProvider: React.FunctionComponent = ({
   return (
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <ApplicationProvider mapping={mapping} theme={currentTheme}>
+          <EmotionProvider theme={currentTheme}>
           {children}
+          </EmotionProvider>
         </ApplicationProvider>
       </ThemeContext.Provider>
   );

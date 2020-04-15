@@ -96,11 +96,9 @@ export const createStyled: CreateStyled = (
   }
 ) => {
   const createStyledComponent = (...rawStyles: any[]) => {
-    console.log('RAW STYLES', rawStyles);
     let styles: EStyleSheet.AnyObject[];
 
     if (rawStyles[0] == null || rawStyles[0].raw === undefined) {
-      console.log('DON NOT INTERLEAVE');
       styles = rawStyles;
     } else {
       styles = interleave(rawStyles as unknown[][]) as EStyleSheet.AnyObject[];

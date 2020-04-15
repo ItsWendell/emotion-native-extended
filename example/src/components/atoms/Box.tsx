@@ -1,4 +1,4 @@
-import styled from "../../providers/styled";
+import styled from "emotion-native-extended";
 import {
   flexbox,
   FlexboxProps,

@@ -3,7 +3,6 @@ import { Layout, Box, Text, Button } from '../components';
 
 export const Home: React.FunctionComponent = () => {
   const [state, setState] = useState(0);
-
   return (
     <Layout
       width="100%"
