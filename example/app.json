@@ -1,11 +1,13 @@
 {
   "expo": {
-    "name": "Emotion Native Extended Example",
-    "slug": "gitchat",
+    "name": "Emotion Extended", 
+    "slug": "emotion-native-extended-example",
     "privacy": "public",
+    "entry": "./App.tsx",
+    "githubUrl": "https://github.com/ItsWendell/emotion-native-extended/tree/develop/example/",
     "platforms": [
       "ios",
-      "android",
+      "android",  
       "web"
     ],
     "version": "1.0.0",
