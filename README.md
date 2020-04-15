@@ -10,6 +10,10 @@ Styled System sadly doesn't support the custimization for media queries yet. See
 
 I've build in a replacement for unsupported media query: `screen and`, to support styled system.
 
+## Usage
+
+Instead of importing `styled` from `emotion or styled components` import it from `emotion-native-extended`, e.g. `import styled from "emotion-native-extended"`.
+
 ## Example
 
 The example contains a Expo project with example usage of the following libaries: Styled System / Emotion / Native Kitten.
