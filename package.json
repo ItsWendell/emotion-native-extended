@@ -15,8 +15,8 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "npm run lint:code && npm run lint:commit",
-    "lint:code": "commitlint --to HEAD",
-    "lint:commit": "tsdx lint",
+    "lint:commit": "commitlint --to HEAD",
+    "lint:code": "tsdx lint",
     "prepare": "tsdx build",
     "release": "semantic-release"
   },
@@ -26,7 +26,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "npm run lint"
     }
   },
   "prettier": {
@@ -41,7 +41,29 @@
     ]
   },
   "release": {
-    "branches": ["master", "next"]
+    "branches": [
+      "master",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "next",
+        "prerelease": true
+      }
+    ]
+  },
+  "eslint": {
+    "extends": [
+      "react-app",
+      "prettier/@typescript-eslint",
+      "plugin:prettier/recommended"
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   },
   "name": "emotion-native-extended",
   "author": "Wendell Misiedjan",

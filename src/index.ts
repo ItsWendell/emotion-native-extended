@@ -1,6 +1,6 @@
-import * as ReactNative from "react-native";
+import * as ReactNative from 'react-native';
 
-import { createCss } from "@emotion/primitives-core";
+import { createCss } from '@emotion/primitives-core';
 import { StyleSheet } from './StyleSheet';
 
 import { createStyled } from './create';
@@ -22,7 +22,7 @@ const styled: Styled = Object.keys(NativeComponents).reduce(
       },
     });
   },
-    createStyled
+  createStyled
 );
 
 export { css, StyleSheet };

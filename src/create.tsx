@@ -68,14 +68,12 @@ const customComponent = (component: React.ComponentType<any>) => ({
     getBreakpoint(Dimensions.get('window').width)
   );
 
-  const discoverResizes = ({
-    window,
-  }: {
-    window: ScaledSize;
-    screen: ScaledSize;
-  }) => {
-    setBreakpoint(getBreakpoint(window.width));
-  };
+  const discoverResizes = useCallback(
+    ({ window }: { window: ScaledSize; screen: ScaledSize }) => {
+      setBreakpoint(getBreakpoint(window.width));
+    },
+    [getBreakpoint]
+  );
 
   useEffect(() => {
     if (breakpoints.length) {
@@ -84,7 +82,7 @@ const customComponent = (component: React.ComponentType<any>) => ({
     } else {
       return () => null;
     }
-  }, [breakpoints]);
+  }, [breakpoints, discoverResizes]);
 
   return <Component {...props} style={getStylesheet(innerStyle, breakpoint)} />;
 };

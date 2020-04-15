@@ -2,7 +2,10 @@ import { ComponentProps } from 'react';
 
 export const testAlwaysTrue = (): boolean => true;
 
-export const pickAssign = (shouldPick: (key: string) => boolean, sources: ComponentProps<any>[]) =>
+export const pickAssign = (
+  shouldPick: (key: string) => boolean,
+  sources: ComponentProps<any>[]
+) =>
   sources.reduce((picked, source) => {
     for (const key in source) {
       if (shouldPick(key)) {
