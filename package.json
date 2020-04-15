@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -14,8 +14,11 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build"
+    "lint": "npm run lint:code && npm run lint:commit",
+    "lint:code": "commitlint --to HEAD",
+    "lint:commit": "tsdx lint",
+    "prepare": "tsdx build",
+    "release": "semantic-release"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
@@ -32,10 +35,20 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "branches": ["master", "next"]
+  },
   "name": "emotion-native-extended",
   "author": "Wendell Misiedjan",
   "module": "dist/emotion-native-extended.esm.js",
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@emotion/primitives": "^10.0.30",
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
@@ -50,7 +63,8 @@
     "react-native": "0.61.4",
     "tsdx": "^0.13.2",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "semantic-release": "^17.0.4"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -58,5 +72,9 @@
     "css-mediaquery": "^0.1.2",
     "lodash.memoize": "^4.1.2",
     "react-native-extended-stylesheet": "^0.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ItsWendell/emotion-native-extended.git"
   }
 }
