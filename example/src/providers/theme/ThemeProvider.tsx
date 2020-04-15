@@ -23,7 +23,7 @@ export const ThemeProvider: React.FunctionComponent = ({
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <ApplicationProvider mapping={mapping} theme={currentTheme}>
           <EmotionProvider theme={currentTheme}>
-          {children}
+            {children}
           </EmotionProvider>
         </ApplicationProvider>
       </ThemeContext.Provider>
