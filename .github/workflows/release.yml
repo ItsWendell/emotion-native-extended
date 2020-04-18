@@ -31,3 +31,5 @@ jobs:
         run: npm run lint --if-present
       - name: release
         run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
