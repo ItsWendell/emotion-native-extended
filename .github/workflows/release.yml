@@ -33,3 +33,4 @@ jobs:
         run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
