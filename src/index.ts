@@ -1,30 +1,38 @@
-import * as ReactNative from 'react-native';
+import * as RN from 'react-native';
 
-import { createCss } from '@emotion/primitives-core';
+import { CreateStyled, StyledOptions } from '@emotion/native';
+import {
+  createCss,
+  createStyled as createStyledEmotion,
+} from '@emotion/primitives-core';
+
 import { StyleSheet } from './StyleSheet';
+import { NativeComponents, ExtendedStyleSheet } from './types';
+import { responsiveComponent } from './responsive';
 
-import { createStyled } from './create';
-import { NativeComponents, Styled } from './types';
+const emotionStyled: CreateStyled = createStyledEmotion(StyleSheet);
 
-/**
- * a function that returns a styled component which render styles in React Native
- */
+const createStyled = (
+  component: React.ComponentType<any>,
+  options?: StyledOptions<any>
+) => emotionStyled(responsiveComponent(component), options);
+
 const css = createCss(StyleSheet);
 
-const styled: Styled = Object.keys(NativeComponents).reduce(
+const styled: CreateStyled = Object.keys(NativeComponents).reduce(
   (acc: any, comp: any) => {
     return Object.defineProperty(acc, comp, {
       enumerable: true,
       configurable: false,
       get() {
         const key = comp as keyof typeof NativeComponents;
-        return createStyled(ReactNative[key]);
+        return createStyled(RN[key]);
       },
     });
   },
   createStyled
 );
 
-export { css, StyleSheet };
+export { css, StyleSheet, CreateStyled, ExtendedStyleSheet };
 
 export default styled;

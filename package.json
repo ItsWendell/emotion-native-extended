@@ -53,7 +53,7 @@
       }
     ]
   },
-  "eslint": {
+  "eslintConfig": {
     "extends": [
       "react-app",
       "prettier/@typescript-eslint",
@@ -69,11 +69,9 @@
   "author": "Wendell Misiedjan",
   "module": "dist/emotion-native-extended.esm.js",
   "devDependencies": {
+    "@emotion/native": "^11.0.0-next.12",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@emotion/primitives": "^10.0.30",
-    "@emotion/styled": "^10.0.27",
-    "@emotion/styled-base": "^10.0.31",
     "@types/css-mediaquery": "^0.1.0",
     "@types/lodash.memoize": "^4.1.6",
     "@types/react": "16.9.0",
@@ -83,14 +81,15 @@
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-native": "0.61.4",
+    "semantic-release": "^17.0.6",
     "tsdx": "^0.13.2",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3",
-    "semantic-release": "^17.0.4"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/primitives-core": "^10.0.27",
+    "@emotion/primitives-core": "^11.0.0-next.12",
+    "@emotion/react": "^11.0.0-next.12",
+    "@emotion/styled": "^11.0.0-next.12",
     "css-mediaquery": "^0.1.2",
     "lodash.memoize": "^4.1.2",
     "react-native-extended-stylesheet": "^0.12.0"

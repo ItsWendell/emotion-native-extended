@@ -1,12 +1,9 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
+import EStyleSheet, { AnyObject } from 'react-native-extended-stylesheet';
 import mediaQuery from 'css-mediaquery';
-
-export type StyleSheetWithSheets = {
-  sheets: Array<Record<string, Record<string, string>>>;
-};
+import { ExtendedStyleSheet } from './types';
 
 export const findBreakpoints = (
-  emotionStyles: EStyleSheet.AnyObject,
+  emotionStyles: AnyObject,
   remValue: number
 ): Array<number> => {
   const allMedia = Object.keys(emotionStyles).filter(
@@ -30,7 +27,6 @@ export const findBreakpoints = (
   return (Array.from(mediaValues) as Array<number>).sort();
 };
 
-export const StyleSheet: typeof EStyleSheet &
-  StyleSheetWithSheets = EStyleSheet as any;
+export const StyleSheet: ExtendedStyleSheet = EStyleSheet as any;
 
 StyleSheet.build();
