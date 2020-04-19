@@ -59,7 +59,6 @@ export const responsiveComponent = (component: React.ComponentType<any>) => ({
 
   const onDimesionsChange = useCallback(
     ({ window }: { window: ScaledSize; screen: ScaledSize }) => {
-      console.log('StyleSheets', StyleSheet.sheets?.length, StyleSheet);
       StyleSheet.build({
         $theme: getBreakpoint(window.width),
       });
