@@ -1,9 +1,10 @@
 import * as RN from 'react-native';
 
-import { CreateStyled, StyledOptions } from '@emotion/native';
 import {
   createCss,
   createStyled as createStyledEmotion,
+  CreateStyled,
+  StyledOptions,
 } from '@emotion/primitives-core';
 
 import { StyleSheet } from './StyleSheet';
@@ -15,7 +16,10 @@ const emotionStyled: CreateStyled = createStyledEmotion(StyleSheet);
 const createStyled = (
   component: React.ComponentType<any>,
   options?: StyledOptions<any>
-) => emotionStyled(responsiveComponent(component), options);
+): ((
+  ...rawStyles: any
+) => React.ForwardRefExoticComponent<React.RefAttributes<any>>) =>
+  emotionStyled(responsiveComponent(component), options);
 
 const css = createCss(StyleSheet);
 

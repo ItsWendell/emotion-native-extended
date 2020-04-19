@@ -69,7 +69,7 @@
   "author": "Wendell Misiedjan",
   "module": "dist/emotion-native-extended.esm.js",
   "devDependencies": {
-    "@emotion/native": "^11.0.0-next.12",
+    "@emotion/native": "^10.0.27",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/css-mediaquery": "^0.1.0",
@@ -87,9 +87,8 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@emotion/primitives-core": "^11.0.0-next.12",
-    "@emotion/react": "^11.0.0-next.12",
-    "@emotion/styled": "^11.0.0-next.12",
+    "@emotion/primitives-core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "css-mediaquery": "^0.1.2",
     "lodash.memoize": "^4.1.2",
     "react-native-extended-stylesheet": "^0.12.0"
