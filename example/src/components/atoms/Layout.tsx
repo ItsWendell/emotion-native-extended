@@ -1,8 +1,8 @@
-import styled from "emotion-native-extended";
+import styled from 'emotion-native-extended';
 import {
   Layout as LayoutComponent,
   LayoutProps as LayoutComponentProps,
-} from "@ui-kitten/components";
+} from '@ui-kitten/components';
 import {
   space,
   layout,
@@ -10,7 +10,7 @@ import {
   SpaceProps,
   LayoutProps as StyledLayoutProps,
   FlexboxProps,
-} from "styled-system";
+} from 'styled-system';
 
 type LayoutProps = SpaceProps &
   StyledLayoutProps &
@@ -18,10 +18,6 @@ type LayoutProps = SpaceProps &
   FlexboxProps;
 
 export const Layout = styled(LayoutComponent)<LayoutProps>(
-  {
-    boxSizing: "border-box",
-    minWidth: 0,
-  },
   space,
   layout,
   flexbox

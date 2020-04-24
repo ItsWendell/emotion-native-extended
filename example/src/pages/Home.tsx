@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Layout, Box, Text, Button } from '../components';
 
 export const Home: React.FunctionComponent = () => {
@@ -30,12 +30,13 @@ export const Home: React.FunctionComponent = () => {
             Emotion / Styled System / React Native
           </Text>
           <Text textAlign="center" fontSize={[1, 2, 3]}>
-            Media Queries supported by 'React Native Extended Stylesheet'
+            Media Queries supported by &apos;React Native Extended
+            Stylesheet&apos;
           </Text>
         </Box>
         <Box marginTop={4}>
           <Button
-            onPress={() => setState(i => i + 1)}
+            onPress={(): void => setState((i: number) => i + 1)}
           >{`Local State ${state}`}</Button>
         </Box>
       </Box>

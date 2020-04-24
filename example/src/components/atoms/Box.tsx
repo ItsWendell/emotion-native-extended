@@ -1,4 +1,4 @@
-import styled from "emotion-native-extended";
+import styled from 'emotion-native-extended';
 import {
   flexbox,
   FlexboxProps,
@@ -8,8 +8,8 @@ import {
   color,
   SpaceProps,
   ColorProps,
-} from "styled-system";
-import { ViewProps } from "react-native";
+} from 'styled-system';
+import { ViewProps } from 'react-native';
 
 type FlexProps = FlexboxProps &
   LayoutProps &

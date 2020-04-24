@@ -1,4 +1,4 @@
-import { dark as darkTheme, light as lightTheme } from "@eva-design/eva";
+import { dark as darkTheme, light as lightTheme } from '@eva-design/eva';
 
 export const breakpoints = ['40rem', '52rem', '64rem'];
 
@@ -20,8 +20,8 @@ export const light = {
 
 export const dark = {
   ...darkTheme,
-  ...defaultStyledTheme
-}
+  ...defaultStyledTheme,
+};
 
 export const themes = {
   light: light,
