@@ -1,42 +1,65 @@
 import * as RN from 'react-native';
 
-import {
-  createCss,
-  createStyled as createStyledEmotion,
-  CreateStyled,
-  StyledOptions,
-} from '@emotion/primitives-core';
+import { createCss } from '@emotion/primitives-core';
 
 import { StyleSheet } from './StyleSheet';
-import { NativeComponents, ExtendedStyleSheet } from './types';
-import { responsiveComponent } from './responsive';
+import { styled as createStyled } from './base';
+import { CreateCSS, CreateStyled } from './types';
+import { ReactNativeComponentNames } from 'types/base';
 
-const emotionStyled: CreateStyled = createStyledEmotion(StyleSheet);
+const css: CreateCSS = createCss(StyleSheet);
 
-const createStyled = (
-  component: React.ComponentType<any>,
-  options?: StyledOptions<any>
-): ((
-  ...rawStyles: any
-) => React.ForwardRefExoticComponent<React.RefAttributes<any>>) =>
-  emotionStyled(responsiveComponent(component), options);
+const components = [
+  'ActivityIndicator',
+  'Button',
+  'DatePickerIOS',
+  'DrawerLayoutAndroid',
+  'FlatList',
+  'Image',
+  'ImageBackground',
+  'KeyboardAvoidingView',
+  'ListView',
+  'Modal',
+  'NavigatorIOS',
+  'Picker',
+  'PickerIOS',
+  'ProgressBarAndroid',
+  'ProgressViewIOS',
+  'RecyclerViewBackedScrollView',
+  'RefreshControl',
+  'SafeAreaView',
+  'ScrollView',
+  'SectionList',
+  'SegmentedControlIOS',
+  'Slider',
+  'SnapshotViewIOS',
+  'StatusBar',
+  'SwipeableListView',
+  'Switch',
+  'SwitchIOS',
+  'TabBarIOS',
+  'Text',
+  'TextInput',
+  'ToolbarAndroid',
+  'TouchableHighlight',
+  'TouchableNativeFeedback',
+  'TouchableOpacity',
+  'TouchableWithoutFeedback',
+  'View',
+  'ViewPagerAndroid',
+];
 
-const css = createCss(StyleSheet);
+export { css };
 
-const styled: CreateStyled = Object.keys(NativeComponents).reduce(
-  (acc: any, comp: any) => {
-    return Object.defineProperty(acc, comp, {
-      enumerable: true,
-      configurable: false,
-      get() {
-        const key = comp as keyof typeof NativeComponents;
-        return createStyled(RN[key]);
-      },
-    });
-  },
-  createStyled
-);
-
-export { css, StyleSheet, CreateStyled, ExtendedStyleSheet };
+const styled: CreateStyled = components.reduce((acc: any, comp) => {
+  return Object.defineProperty(acc, comp, {
+    enumerable: true,
+    configurable: false,
+    get() {
+      const key = comp as ReactNativeComponentNames;
+      return createStyled(RN[key]);
+    },
+  });
+}, createStyled);
 
 export default styled;
