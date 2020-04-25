@@ -103,7 +103,7 @@ export type Interpolation<
   | ArrayInterpolation<MergedProps, StyleType>
   | FunctionInterpolation<MergedProps, StyleType>;
 
-/** Same as StyledOptions but shouldForwardProp must be a type guard */
+/** Same as StyledOptions but getShouldForwardProp must be a type guard */
 export interface FilteringStyledOptions<
   Props,
   ForwardedProps extends keyof Props = keyof Props
@@ -111,7 +111,7 @@ export interface FilteringStyledOptions<
   shouldForwardProp?(propName: PropertyKey): propName is ForwardedProps;
 }
 
-export interface StyledOptions<Props = {}> {
+export interface StyledOptions<Props> {
   shouldForwardProp?(propName: keyof Props): boolean;
 }
 

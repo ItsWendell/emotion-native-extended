@@ -9,14 +9,6 @@ import memoize from 'lodash.memoize';
 import { useMemo } from 'react';
 import { useState } from 'react';
 
-const getStylesheet = memoize(
-  (styles: any, _breakpoint: number | undefined) => {
-    return StyleSheet.create(styles) as any;
-  },
-  (styles: any, _breakpoint: number | undefined) =>
-    JSON.stringify(styles) + _breakpoint
-);
-
 type AnyProps = {
   style: AnyStyle;
   [key: string]: any;
@@ -40,9 +32,19 @@ function withResponsive<P = AnyProps>(
 ) {
   // I don't know how to implement this without breaking out of the types.
   // The overloads are ensuring correct usage, so we should be good?
-  return React.forwardRef<typeof Component, P & AnyProps>(
-    ({ style, ...props }, ref) => {
+  const Responsive = React.forwardRef<typeof Component, P & AnyProps>(
+    ({ style, children, ...props }, ref) => {
       const theme = useContext(ThemeContext) as Theme;
+
+      const getStylesheet = memoize(
+        (styles: any, _breakpoint: number | undefined) => {
+          return StyleSheet.create({
+            styles,
+          }).styles as any;
+        },
+        (_styles: any, _breakpoint: number | undefined) => breakpoint
+      );
+
       const styles = useMemo<ReactNativeStyle>(() => {
         if (!style) return {};
 
@@ -74,7 +76,7 @@ function withResponsive<P = AnyProps>(
 
       const getBreakpoint = useCallback(
         (width: number): number | undefined => {
-          return (breakpoints || []).find(item => width < item);
+          return (breakpoints || []).find((item: number) => width < item);
         },
         [breakpoints]
       );
@@ -103,15 +105,15 @@ function withResponsive<P = AnyProps>(
         }
       }, [breakpoints]);
 
+      const stylesheet = getStylesheet(styles, breakpoint);
       return (
-        <Component
-          ref={ref}
-          style={getStylesheet(styles, breakpoint)}
-          {...props}
-        />
+        <Component {...props} ref={ref} style={stylesheet}>
+          {children}
+        </Component>
       );
     }
   );
+  return Responsive;
 }
 
 export { withResponsive };

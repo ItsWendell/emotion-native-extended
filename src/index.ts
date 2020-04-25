@@ -5,7 +5,8 @@ import { createCss } from '@emotion/primitives-core';
 import { StyleSheet } from './StyleSheet';
 import { styled as createStyled } from './base';
 import { CreateCSS, CreateStyled } from './types';
-import { ReactNativeComponentNames } from 'types/base';
+import { ReactNativeComponentNames } from './types/base';
+import { getShouldForwardProp } from './base';
 
 const css: CreateCSS = createCss(StyleSheet);
 
@@ -57,7 +58,9 @@ const styled: CreateStyled = components.reduce((acc: any, comp) => {
     configurable: false,
     get() {
       const key = comp as ReactNativeComponentNames;
-      return createStyled(RN[key]);
+      return createStyled(RN[key], {
+        shouldForwardProp: getShouldForwardProp(RN[key]),
+      });
     },
   });
 }, createStyled);

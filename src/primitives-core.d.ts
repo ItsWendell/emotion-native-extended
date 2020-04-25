@@ -3,5 +3,14 @@ declare module '@emotion/primitives-core' {
   export function createCss(
     StyleSheet: typeof EStyleSheet
   ): (...args: any[]) => any;
-  export function createStyled(StyleSheet: typeof EStyleSheet): any;
+  export function createStyled(
+    StyleSheet: typeof EStyleSheet,
+    {
+      getShouldForwardProp,
+    }: {
+      getShouldForwardProp?: (
+        component: React.ElementType
+      ) => (propName: string) => boolean;
+    }
+  ): any;
 }

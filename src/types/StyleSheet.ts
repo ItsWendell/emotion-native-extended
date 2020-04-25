@@ -51,6 +51,9 @@ export type ExtendedStyle<T = {}> =
     }
   | {
       [key: string]: T;
+    }
+  | {
+      [key in keyof T]: string | number | string[];
     };
 
 export type ReactNativeStyleType<Props> = Props extends {
