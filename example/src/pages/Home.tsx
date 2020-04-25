@@ -1,45 +1,51 @@
 import React, { useState } from 'react';
-import { Layout, Box, Text, Button } from '../components';
+import { Box, Text, Button } from '../components';
 
 export const Home: React.FunctionComponent = () => {
   const [state, setState] = useState(0);
   return (
-    <Layout
-      width="100%"
-      height="100%"
-      justifyContent="center"
+    <Box
       alignItems="center"
+      justifyContent="space-between"
+      backgroundColor={['red', 'green', 'blue']}
+      padding={'1rem'}
+      margin={[2, 4, 5]}
+      flexDirection={['column', 'row']}
     >
-      <Box
-        alignItems="center"
-        justifyContent="center"
-        backgroundColor={['red', 'green', 'blue']}
-        padding={[2, 0]}
-        margin={2}
-      >
-        <Text textAlign="center">Hello world!</Text>
-        <Text textAlign="center">React Native (Web) - Expo</Text>
-        <Box mt={3}>
-          <Text
-            textAlign="center"
-            category="h1"
-            lineHeight={[25, 40, 40]}
-            fontSize={[2, 4, 5]}
-            fontWeight={['bold']}
-          >
-            Emotion / Styled System / React Native
-          </Text>
-          <Text textAlign="center" fontSize={[1, 2, 3]}>
-            Media Queries supported by &apos;React Native Extended
-            Stylesheet&apos;
-          </Text>
-        </Box>
+      <Box mr={[0, 4]} flex={[0, 1]}>
+        <Text textAlign="center" category="h1">
+          Hello world!
+        </Text>
+        <Text textAlign="center" category="s1">
+          React Native (Web) - Expo
+        </Text>
+      </Box>
+      <Box mt={[2, 0]} flex={[0, 2]}>
+        <Text
+          textAlign="center"
+          category="h2"
+          fontSize={[2, 3]}
+          fontWeight="bold"
+          flexWrap="wrap"
+          numberOfLines={2}
+        >
+          Emotion / Styled System / React Native
+        </Text>
+        <Text
+          textAlign="center"
+          fontSize={[1, 2]}
+          flexWrap="wrap"
+          numberOfLines={2}
+        >
+          Media Queries supported by &apos;React Native Extended
+          Stylesheet&apos;
+        </Text>
         <Box marginTop={4}>
-          <Button
-            onPress={(): void => setState((i: number) => i + 1)}
-          >{`Local State ${state}`}</Button>
+          <Button onPress={() => setState((i: number) => i + 1)}>
+            {`Local State ${state}`}
+          </Button>
         </Box>
       </Box>
-    </Layout>
+    </Box>
   );
 };

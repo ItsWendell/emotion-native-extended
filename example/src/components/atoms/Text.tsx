@@ -1,8 +1,15 @@
 import styled from 'emotion-native-extended';
 import { TextProps as NativeTextProps } from 'react-native';
 import { Text as Component } from '@ui-kitten/components';
-import { typography, TypographyProps } from 'styled-system';
+import {
+  color,
+  ColorProps,
+  typography,
+  flexbox,
+  FlexboxProps,
+  TypographyProps,
+} from 'styled-system';
 
-type Props = NativeTextProps & TypographyProps;
+type Props = NativeTextProps & ColorProps & TypographyProps & FlexboxProps;
 
-export const Text = styled(Component)<Props>({}, typography);
+export const Text = styled(Component)<Props>(typography, color, flexbox);

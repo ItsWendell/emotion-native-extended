@@ -1,4 +1,4 @@
-import styled from 'emotion-native-extended';
+import { ViewProps, View } from 'react-native';
 import {
   flexbox,
   FlexboxProps,
@@ -8,13 +8,17 @@ import {
   color,
   SpaceProps,
   ColorProps,
+  compose,
 } from 'styled-system';
-import { ViewProps } from 'react-native';
+import styled from 'emotion-native-extended';
 
-type FlexProps = FlexboxProps &
+export type BoxProps = FlexboxProps &
   LayoutProps &
   ViewProps &
   SpaceProps &
   ColorProps;
 
-export const Box = styled.View<FlexProps>({}, flexbox, layout, space, color);
+// Composing style functions is more perfomant than just adding them
+export const composeBox = compose(space, flexbox, layout, color);
+
+export const Box = styled(View)<BoxProps>(composeBox);
