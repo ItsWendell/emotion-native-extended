@@ -7,7 +7,7 @@ export const Home: React.FunctionComponent = () => {
     <Box
       alignItems="center"
       justifyContent="space-between"
-      backgroundColor={['red', 'green', 'blue']}
+      backgroundColor={['red', 'green', 'darkgoldenrod']}
       padding={'1rem'}
       margin={[2, 4, 5]}
       flexDirection={['column', 'row']}

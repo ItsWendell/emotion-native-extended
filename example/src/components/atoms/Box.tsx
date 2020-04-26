@@ -1,3 +1,4 @@
+import React from 'react';
 import { ViewProps, View } from 'react-native';
 import {
   flexbox,
@@ -21,4 +22,18 @@ export type BoxProps = FlexboxProps &
 // Composing style functions is more perfomant than just adding them
 export const composeBox = compose(space, flexbox, layout, color);
 
-export const Box = styled(View)<BoxProps>(composeBox);
+export const BaseBox = styled(View)<BoxProps>(composeBox);
+
+export const Box = <C extends React.ComponentType<any>>({
+  as,
+  children,
+  ...props
+}: {
+  as?: C;
+  children?: JSX.Element | JSX.Element[];
+} & BoxProps &
+  React.ComponentProps<C>) => {
+  const Component = as ? styled(as)<BoxProps>(composeBox) : BaseBox;
+
+  return <Component {...props}>{children}</Component>;
+};

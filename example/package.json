@@ -37,7 +37,8 @@
         "react-router-dom": "^5.1.2",
         "react-router-native": "^5.1.2",
         "styled-components": "^5.1.0",
-        "styled-system": "^5.1.5"
+        "styled-system": "^5.1.5",
+        "react-native-appearance": "~0.3.3"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0",
