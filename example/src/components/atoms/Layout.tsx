@@ -1,4 +1,4 @@
-import styled from 'emotion-native-extended';
+import styled from '../../providers/styled';
 import {
   Layout as LayoutComponent,
   LayoutProps as LayoutComponentProps,

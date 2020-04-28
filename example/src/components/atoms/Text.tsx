@@ -1,4 +1,4 @@
-import styled from 'emotion-native-extended';
+import styled from '../../providers/styled';
 import { TextProps as NativeTextProps } from 'react-native';
 import { Text as Component } from '@ui-kitten/components';
 import {

@@ -1,5 +1,15 @@
 import React from 'react';
+import styled from '../providers/styled';
 import { Box, Text, Card, Container } from '../components';
+import * as RN from 'react-native';
+
+const HoverText = styled(RN.Text)(`
+  font-size: 1rem;
+  :hover {
+    font-size: 2rem;
+    color: red;
+  }
+`);
 
 export const Padding = () => (
   <Container p={2}>

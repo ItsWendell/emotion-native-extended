@@ -14,6 +14,7 @@ import { SafeAreaView, StatusBar } from 'react-native';
 import { useHistory } from './providers/react-router';
 import { Padding } from './pages/Padding';
 import { useThemeMode } from './providers/theme/ThemeContext';
+import { Psuedo } from './pages/Psuedo';
 
 export const Demo = () => {
   const history = useHistory();
@@ -38,11 +39,15 @@ export const Demo = () => {
                 <Button onPress={() => history.push('/demo2')} mr={[1, 3]}>
                   Demo 2
                 </Button>
+                <Button onPress={() => history.push('/psuedo')} mr={[1, 3]}>
+                  Psuedo
+                </Button>
               </Flex>
             )}
           ></TopNavigation>
           <Route exact path="/" component={Home} />
           <Route path="/demo2" component={Padding} />
+          <Route path="/psuedo" component={Psuedo} />
         </Container>
         <Container mb={[3, 5]}>
           <Toggle

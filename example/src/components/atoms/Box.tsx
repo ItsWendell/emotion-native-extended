@@ -11,7 +11,7 @@ import {
   ColorProps,
   compose,
 } from 'styled-system';
-import styled from 'emotion-native-extended';
+import styled from '../../providers/styled';
 
 export type BoxProps = FlexboxProps &
   LayoutProps &

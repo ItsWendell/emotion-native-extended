@@ -1,4 +1,4 @@
-import styled from 'emotion-native-extended';
+import styled from '../../providers/styled';
 import { Box, BoxProps } from './Box';
 
 export const Container = styled(Box)<BoxProps>({
