@@ -47,8 +47,9 @@ const forwardableProps: Record<string, boolean> = {
   suppressHighlighting: true,
   testID: true,
   textBreakStrategy: true,
-  children: false,
+  children: true,
   style: true,
+  ref: true,
   maxWidth: false,
 };
 

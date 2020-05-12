@@ -39,15 +39,15 @@ const getDisplayName = (primitive: string | React.ComponentType<any>): string =>
 
 const cachedStylesheets = memoize(
   (
-    styles: any,
+    _styles: any,
     _breakpoint: number | undefined,
     _isHovered: boolean,
     _isActive: boolean,
     _isFocused: boolean
   ) => {
     return StyleSheet.create({
-      styles,
-    }).styles as any;
+      _styles,
+    })._styles as any;
   },
   (...args) => JSON.stringify(args)
 );
@@ -72,17 +72,36 @@ export const createStyled: CreateStyled = <
       styles = interleave(rawStyles as unknown[][]) as EStyleSheet.AnyObject[];
     }
 
+    // console.log('RAW STYLES', component.displayName, rawStyles, component);
+    if (component.$$emotion_styles) {
+      console.log(
+        'FOUND EMOTION STYLES!',
+        component.displayName,
+        styles,
+        component.$$emotion_styles
+      );
+      styles = styles.concat(...component.$$emotion_styles);
+      console.log('Merged styles', styles);
+    }
+
     const Styled = React.forwardRef<
       typeof component,
       React.ComponentProps<T> & any
     >(({ children, ...props }: React.ComponentProps<T> & any, ref) => {
-      const [shouldRef, setShouldRef] = useState(false);
+      const [shouldRef, setShouldRef] = useState(Boolean(component.$$emotion_styles));
       const theme = useContext(ThemeContext) as Theme;
       const _ref = useRef(ref);
       const isHovered = useHover(shouldRef ? _ref : undefined);
       const isFocused = useFocus(shouldRef ? _ref : undefined);
       const isActive = useActive(shouldRef ? _ref : undefined);
 
+      console.log(
+        component.displayName,
+        `isForward: ${!!component.$$emotion_styles} | isHovered`,
+        isHovered,
+        `shouldRef ${shouldRef}`,
+        _ref
+      );
       let mergedProps = props;
       if (props.theme == null) {
         mergedProps = {};
@@ -182,6 +201,7 @@ export const createStyled: CreateStyled = <
       );
 
       useEffect(() => {
+        // console.log(component.displayName, component.$$typeof, component);
         if (breakpoints.length) {
           Dimensions.addEventListener('change', onDimesionsChange);
           return () =>
@@ -207,10 +227,13 @@ export const createStyled: CreateStyled = <
         }
       }
 
+      console.log('SHEET', component.displayName, sheet);
+
       newProps.style = sheet;
       newProps.children = children;
       newProps.ref = _ref;
 
+      // styles = stylesWithStyleProp;
       return React.createElement(component, newProps);
     }) as StyledComponent<React.ComponentProps<T>, any>;
 
@@ -218,6 +241,8 @@ export const createStyled: CreateStyled = <
       return createStyled(newComponent)(...styles) as any;
     };
     Styled.displayName = `extended(${getDisplayName(component)})`;
+
+    Styled.$$emotion_styles = rawStyles;
     return Styled;
   };
   return createStyledComponent;

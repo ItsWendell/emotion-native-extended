@@ -12,6 +12,14 @@ const HoverText = styled(RN.Text)(`
   }
 `);
 
+const StyledStyled = styled(Text)(`
+  font-weight: bold;
+  color: red;
+  :hover {
+    color: green;
+  }
+`);
+
 const HoverTextTesting = styled(TextKitten)({
   fontSize: '1rem',
   ':hover': {
@@ -34,6 +42,7 @@ export const Psuedo = () => (
     </Box>
     <Box>
       <HoverTextTesting>Styled using objects...</HoverTextTesting>
+      <StyledStyled>Hello World 2</StyledStyled>
     </Box>
   </Container>
 );
