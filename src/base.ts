@@ -1,7 +1,4 @@
-import { StyleSheet } from './StyleSheet';
-import { createStyled } from '@emotion/primitives-core';
-import { CreateStyled } from './types/base';
-import { withResponsive } from './responsive';
+import { createStyled } from './createStyled';
 import { View, Text, Image } from 'react-native';
 import {
   testPickPropsOnPrimitiveComponent,
@@ -19,14 +16,6 @@ export function getShouldForwardProp(component: React.ElementType) {
   return testPickPropsOnOtherComponent;
 }
 
-/**
- * a function that returns a styled component which render styles in React Native
- */
-const emotionStyled: CreateStyled = createStyled(StyleSheet, {
-  getShouldForwardProp,
-});
-
-const styled: CreateStyled = (component: any, options: any) =>
-  emotionStyled(withResponsive<typeof component>(component), options);
+const styled = createStyled;
 
 export { styled };

@@ -1,14 +1,15 @@
 import * as RN from 'react-native';
 
-import { createCss } from '@emotion/primitives-core';
+// import { createCss } from './createCss';
 
 import { StyleSheet } from './StyleSheet';
 import { styled as createStyled } from './base';
-import { CreateCSS, CreateStyled } from './types';
+import { CreateStyled } from './types';
 import { ReactNativeComponentNames } from './types/base';
 import { getShouldForwardProp } from './base';
+import { createCss } from './createCss';
 
-const css: CreateCSS = createCss(StyleSheet);
+const css = createCss(StyleSheet);
 
 const components = [
   'ActivityIndicator',

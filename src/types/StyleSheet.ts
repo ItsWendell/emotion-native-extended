@@ -69,5 +69,3 @@ export type ExtendedStylesheet = typeof EStyleSheet;
 export interface Stylesheet extends ExtendedStylesheet {
   sheets: Array<Record<string, Record<string, string>>>;
 }
-
-// export const StyleSheet: Stylesheet;
