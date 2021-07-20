@@ -83,7 +83,7 @@
     "husky": "^4.2.5",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "react-native": "0.61.4",
+    "react-native": "0.62.3",
     "semantic-release": "^17.0.7",
     "tsdx": "^0.13.2",
     "tslib": "^1.11.1",
