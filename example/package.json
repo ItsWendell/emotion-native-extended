@@ -42,7 +42,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.0.0",
-        "@expo/webpack-config": "^0.12.1",
+        "@expo/webpack-config": "^0.12.82",
         "@types/css-mediaquery": "^0.1.0",
         "@types/lodash.memoize": "^4.1.6",
         "@types/node": "^13.13.2",
